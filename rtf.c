@@ -20,9 +20,9 @@
 
 /* Since RTF sucks, we simplify here */
 
-#define kNormalStyle "\\s0 \\qj\\sa180\\f0\\fs24 "
-#define kH1 "\\s1 \\f1\\fs32\\ql\\sb240\\sa180\\b "
-#define kH2 "\\s2 \\f1\\fs28\\ql\\sb240\\sa180\\i\\b "
+#define kNormalStyle "\\s0 \\ql\\sa180\\f0\\fs24 "
+#define kH1 "\\s1 \\f1\\fs32\\qc\\sb240\\sa960\\b "
+#define kH2 "\\s2 \\f1\\fs28\\qc\\sb240\\sa240 "
 #define kH3 "\\s3 \\f1\\fs28\\ql\\sb240\\sa180\\b "
 #define kH4 "\\s4 \\f1\\fs24\\ql\\sb240\\sa180\\i\\b "
 #define kH5 "\\s5 \\f1\\fs24\\ql\\sb240\\sa180\\b "
@@ -176,7 +176,7 @@ void print_rtf_node(GString *out, node *n, scratch_pad *scratch) {
 			pad_rtf(out, 2, scratch);
 			switch (lev) {
 				case 1:
-					g_string_append_printf(out, "{\\pard " kH1);
+					g_string_append_printf(out, "{\\page " kH1);
 					break;
 				case 2:
 					g_string_append_printf(out, "{\\pard " kH2);
