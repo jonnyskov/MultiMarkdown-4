@@ -19,10 +19,10 @@
 
 /* Main API commands */
 
-char * markdown_to_string(char * source, unsigned long extensions, int format);
-bool   has_metadata(char *source, unsigned long extensions);
-char * extract_metadata_keys(char *source, unsigned long extensions);
-char * extract_metadata_value(char *source, unsigned long extensions, char *key);
+char * markdown_to_string(const char * source, unsigned long extensions, int format);
+bool   has_metadata(const char *source, unsigned long extensions);
+char * extract_metadata_keys(const char *source, unsigned long extensions);
+char * extract_metadata_value(const char *source, unsigned long extensions, char *key);
 char * mmd_version(void);
 
 
@@ -64,6 +64,7 @@ enum export_formats {
 	CRITIC_REJECT_FORMAT,
 	CRITIC_HTML_HIGHLIGHT_FORMAT,
 	LYX_FORMAT,
+	TOC_FORMAT,
 };
 
 /* These are the identifiers for node types */
@@ -148,6 +149,7 @@ enum keys {
 	ABBR,
 	ABBRSTART,
 	ABBRSTOP,
+	TOC,
 	KEY_COUNTER                      /* This *MUST* be the last item in the list */
 };
 

@@ -23,6 +23,10 @@ void begin_odf_output(GString *out, node* list, scratch_pad *scratch) {
 	fprintf(stderr, "begin_odf_output\n");
 #endif	
 	print_odf_header(out);
+
+	if (list == NULL) {
+		g_string_append_printf(out, "<office:body>\n<office:text>\n");
+	}
 }
 
 /* end_odf_output -- close the document */
@@ -821,6 +825,9 @@ void print_odf_node(GString *out, node *n, scratch_pad *scratch) {
 			g_string_append_printf(out, "</text:span>");
 			break;
 		case KEY_COUNTER:
+			break;
+		case TOC:
+			print_odf_node_tree(out,n->children, scratch);
 			break;
 		default:
 			fprintf(stderr, "print_odf_node encountered unknown node key = %d\n",n->key);

@@ -854,6 +854,11 @@ void print_html_node(GString *out, node *n, scratch_pad *scratch) {
 		case ABBREVIATION:
 		case KEY_COUNTER:
 			break;
+		case TOC:
+			g_string_append_printf(out, "<div class=\"TOC\">\n");
+			print_html_node_tree(out,n->children, scratch);
+			g_string_append_printf(out, "\n</div>");
+			break;
 		default:
 			fprintf(stderr, "print_html_node encountered unknown node key = %d\n",n->key);
 			exit(EXIT_FAILURE);
